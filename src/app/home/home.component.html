@@ -1,0 +1,48 @@
+<!--suppress ALL -->
+
+<section>
+  <div class="row top-space">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10">
+      <h1>Price Calculator (Assessment) - <small>by Amila Viduranga</small></h1>
+      <button class="btn btn-success" (click)="loadModalNewItem()">Add New Item</button>
+      <div class="row top-space">
+        <div class="col-sm-7">
+          <app-item-list
+            [items]="avilableItems"
+            (getAmount)="passAmount($event)"
+            (getEditItem)="getEditItemInfo($event)"
+          ></app-item-list>
+        </div>
+        <div class="col-sm-5">
+          <app-calculator
+            [calculatedITemList]="calculatedItemList"
+            [totalPrice]="totalPrice"
+            (changeAmountPurchased)="changeAmount($event)"
+            (removeItem)="removeItem($event)"
+          ></app-calculator>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-1"></div>
+  </div>
+</section>
+
+<section id="models">
+  <div class="modal fade" id="newItem" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Item Details</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <app-add-item
+          [item]="newItem"
+          (passItemInfo)="getNewItemDetails($event)"
+        ></app-add-item>
+      </div>
+    </div>
+  </div>
+</section>

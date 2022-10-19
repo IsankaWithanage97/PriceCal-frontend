@@ -1,0 +1,75 @@
+<!--suppress ALL -->
+<div class="card">
+  <div class="card-header">
+    <h3>Calculator</h3>
+    <small>This is your shopping cart. This will display what are the items you purchased</small>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <table class="table">
+        <thead class="thead-dark">
+        <tr>
+          <th scope="col">Item Image</th>
+          <th scope="col">Item Name</th>
+          <th scope="col">Amount</th>
+          <th scope="col">Price</th>
+          <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let calculatedItem of calculatedITemList">
+          <td>
+            <img [src]="calculatedItem.item.imageUrl" class="img-fluid" alt="">
+          </td>
+          <td>{{calculatedItem.item.itemName}}</td>
+          <td>{{calculatedItem.amount}}</td>
+          <td>$ {{calculatedItem.price}}</td>
+          <td class="btn-group">
+            <button class="btn btn-primary" (click)="isEdit(calculatedItem)">
+              <i class="fa fa-edit"></i>
+            </button>
+            <button class="btn btn-danger" (click)="isRemove(calculatedItem)">
+              <i class="fa fa-remove"></i>
+            </button>
+          </td>
+        </tr>
+        </tbody>
+        <tfoot *ngIf="calculatedITemList.length > 0">
+        <tr>
+          <td>Total Price</td>
+          <td></td>
+          <td></td>
+          <td>$ {{totalPrice}}</td>
+        </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="modal" tabindex="-1" role="dialog" id="editAmount">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Edit</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="editAmount">Edited Amount</label>
+            <!--suppress XmlDuplicatedId -->
+            <input type="number" class="form-control" id="editAmount" aria-describedby="editAmountHelp" placeholder="Enter amount" name="editedAmount" [(ngModel)]="selectedItem.amount">
+            <small id="editAmountHelp" class="form-text text-muted">You have to give your new amount</small>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" (click)="editAmount()">Save changes</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

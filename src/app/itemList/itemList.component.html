@@ -1,0 +1,14 @@
+<div class="card">
+  <div class="card-header">
+    <h3>Item List</h3>
+    <small>All the available items are listed here. If you want to add new item click "Add New Item" button</small>
+  </div>
+  <div class="card-body">
+    <app-item-card
+      *ngFor="let item of items"
+      [item]="item"
+      (getAmount)="setAmount($event)"
+      (editItem)="passEditItem($event)"
+    ></app-item-card>
+  </div>
+</div>

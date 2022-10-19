@@ -1,0 +1,86 @@
+<div class="modal-body">
+  <app-input-field
+    name="itemName"
+    label="Item Name"
+    id="itemName"
+    describeId="itemNameDescribe"
+    placeHolder="Item name eg:- Horse shoe"
+    [model]="item.itemName"
+    description="Provide Item Name"
+    [isMandatory]="true"
+    (getValue)="setValue($event)"
+  ></app-input-field>
+  <app-input-field
+    name="priceOFSingleCartoon"
+    label="Carton Price"
+    id="priceOFSingleCartoon"
+    type="number"
+    describeId="priceOFSingleCartoonDescribe"
+    placeHolder="Carton Price eg:- 175"
+    [model]="item.priceOFSingleCartoon"
+    description="Provide Carton Price"
+    [isMandatory]="true"
+    (getValue)="setValue($event)"
+  ></app-input-field>
+  <app-input-field
+    name="imageUrl"
+    label="Image Url of Item"
+    id="imageUrl"
+    describeId="imageUrlDescribe"
+    placeHolder="imageUrl eg:- https://image.shutterstock.com/image-illustration/easter-penguin-bunny-ears-600w-381751741.jpg"
+    [model]="item.imageUrl"
+    description="Image of the item.You have to provide image url that hosted in any cloud eg:- google image"
+    [isMandatory]="true"
+    (getValue)="setValue($event)"
+  ></app-input-field>
+  <img [src]="item.imageUrl" width="200" height="200" class="img-fluid">
+  <app-input-field
+    name="noOfUnitsInCartoon"
+    label="Units per carton"
+    id="noOfUnitsInCartoon"
+    type="number"
+    describeId="noOfUnitsInCartoonDescribe"
+    placeHolder="units in carton eg:- 20"
+    [model]="item.noOfUnitsInCartoon"
+    description="Provide no of itms in a carton"
+    [isMandatory]="true"
+    (getValue)="setValue($event)"
+  ></app-input-field>
+  <app-input-field
+    name="discountPrecentage"
+    label="Dicout Precentage"
+    id="discountPrecentage"
+    type="number"
+    describeId="discountPrecentageDescribe"
+    placeHolder="discount precentage eg:- 0.1"
+    [model]="item.discountPrecentage"
+    description="Precentage of discount that apply when customer purchased more than minimum carton amount that needed to apply discount. Default value is 0.1"
+    (getValue)="setValue($event)"
+  ></app-input-field>
+  <app-input-field
+    name="minCartoonAmountToDiscount"
+    label="Minimum Carton aount to apply discount"
+    id="minCartoonAmountToDiscount"
+    type="number"
+    describeId="minCartoonAmountToDiscountDescribe"
+    placeHolder="minimum carton amount that use to apply discount eg:- 3"
+    [model]="item.minCartoonAmountToDiscount"
+    description="Minimum amount that customer needed to purchased to get advance of discount. Default value is 3"
+    (getValue)="setValue($event)"
+  ></app-input-field>
+  <app-input-field
+    name="increasedPrecentage"
+    label="Precentage that apply single item purchase"
+    id="increasedPrecentage"
+    type="number"
+    describeId="increasedPrecentageDescribe"
+    placeHolder="Precentage value that apply single item purchase eg:- 0.3"
+    [model]="item.increasedPrecentage"
+    description="Precentage value that apply for single item purchase. Default value is 0.3"
+    (getValue)="setValue($event)"
+  ></app-input-field>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+  <button type="button" class="btn btn-primary" (click)="getNewItem()">Save changes</button>
+</div>
